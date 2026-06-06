@@ -89,11 +89,12 @@ public class ProductServiceImpl implements ProductService{
 
     @Override
     public boolean deleteProduct(int id) {
-        Product product = productRepository.findProductById(id);
+        var product = productRepository.findProductById(id);
         if (product == null) {
             log.info("Product with id {} not found", id);
             return false;
         }
-        return productRepository.deleteProductById(id);
+        productRepository.deleteProductById(id);
+        return true;
     }
 }

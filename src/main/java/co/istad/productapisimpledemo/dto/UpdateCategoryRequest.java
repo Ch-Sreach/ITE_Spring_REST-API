@@ -1,7 +1,6 @@
 package co.istad.productapisimpledemo.dto;
 
-public record CategoryResponse(
-        Integer id,
+public record UpdateCategoryRequest(
         String name,
         String description,
         Boolean isActive

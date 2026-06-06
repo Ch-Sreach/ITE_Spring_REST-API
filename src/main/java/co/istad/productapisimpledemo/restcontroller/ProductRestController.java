@@ -42,7 +42,7 @@ public class ProductRestController {
 
     //delete product by ID
     @DeleteMapping("/{id}")
-    public boolean deleteProduct(@PathVariable Integer id) {
+    public Boolean deleteProduct(@PathVariable Integer id){
         return productService.deleteProduct(id);
     }
 }

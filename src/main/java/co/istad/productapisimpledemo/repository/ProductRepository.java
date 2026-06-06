@@ -32,7 +32,7 @@ public class ProductRepository {
     }
     public boolean deleteProductById(Integer id){
         return productList
-                .removeIf(product -> product.getId()== id);
+                .removeIf(product -> product.getId() == id);
     }
     public Product updateProductById(Product updateProduct) {
         for (int i = 0; i < productList.size(); i++) {

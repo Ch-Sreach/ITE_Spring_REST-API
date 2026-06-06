@@ -17,7 +17,6 @@ public class RestControllerAdvisor {
 
 //    @ExceptionHandler(MethodArgumentNotValidException.class)
 //    public Map<String, String> handleMethodNotValidException(
-    // ResponseEntity: use doysa
 //    public ResponseEntity<ErrorResponse<?>> handleMethodNotValidException(MethodArgumentNotValidException exception) {
 //        Map<String, String> errors = new HashMap<>();
 //        exception.getBindingResult().getFieldErrors().forEach(fieldError ->
@@ -45,6 +44,26 @@ public class RestControllerAdvisor {
                         .timestamp(LocalDateTime.now())
                         .build(),
                 HttpStatus.NOT_FOUND
+        );
+    }
+
+    @ExceptionHandler(MethodArgumentNotValidException.class)
+    public ResponseEntity<ErrorResponse<?>> handleMethodNotValidException(MethodArgumentNotValidException exception ){
+        Map<String,String > errors = new HashMap<>();
+        exception.getBindingResult().getFieldErrors().forEach(
+                error ->
+                        errors.put(error.getField(), error.getDefaultMessage())
+        );
+        // should use entity response for better message
+        return new ResponseEntity<>(
+                ErrorResponse
+                        .builder()
+                        .message("Provided data is invalid")
+                        .status(HttpStatus.BAD_REQUEST.value())
+                        .errors(errors)
+                        .timestamp(LocalDateTime.now())
+                        .build(),
+                HttpStatus.BAD_REQUEST
         );
     }
 }

@@ -1,15 +1,16 @@
 package co.istad.productapisimpledemo.service;
 
-import co.istad.productapisimpledemo.dto.ProductRequest;
-import co.istad.productapisimpledemo.dto.ProductResponse;
-import co.istad.productapisimpledemo.dto.UpdateProductRequest;
+
+import co.istad.productapisimpledemo.dto.CategoryRequest;
+import co.istad.productapisimpledemo.dto.CategoryResponse;
+import co.istad.productapisimpledemo.dto.UpdateCategoryRequest;
 
 import java.util.List;
 
 public interface CategoryService {
-    ProductResponse createProduct(ProductRequest request);
-    List<ProductResponse> findAllProducts();
-    ProductResponse findProductById(Integer id);
-    ProductResponse updateProduct(Integer id, UpdateProductRequest updateProductRequest);
-    boolean deleteProduct(int id);
+    CategoryResponse createCategory(CategoryRequest request);
+    List<CategoryResponse> findAllCategory();
+    CategoryResponse updateCategory(Integer id, UpdateCategoryRequest categoryRequest);
+    CategoryResponse findCategoryById(Integer id);
+    Boolean deleteCategory(Integer id);
 }
